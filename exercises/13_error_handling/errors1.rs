@@ -13,6 +13,7 @@ fn generate_nametag_text(name: String) -> Result<String, String> {
     }
 }
 
+
 fn main() {
     // You can optionally experiment here.
     let res = generate_nametag_text(String::from("Flynn"));
