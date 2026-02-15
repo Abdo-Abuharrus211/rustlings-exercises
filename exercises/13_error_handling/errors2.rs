@@ -14,18 +14,21 @@
 // There are at least two ways to implement this that are both correct. But one
 // is a lot shorter!
 
-use std::{num::ParseIntError};
+use std::num::ParseIntError;
 
 fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let processing_fee = 1;
     let cost_per_item = 5;
 
     // TODO: Handle the error case as described above.
-    let qty = item_quantity.parse::<i32>();
-    match qty{
-        Ok(q) => Ok(q * cost_per_item + processing_fee),
-        Err(e) => Err(e)
-    }
+    // let qty = match item_quantity.parse::<i32>() {
+    //     Ok(q) => q,
+    //     Err(e) => return Err(e),
+    // };
+
+    // This is the concise and syntactic sugar version
+    let qty = item_quantity.parse::<i32>()?;
+    Ok(qty * cost_per_item + processing_fee)
 }
 
 fn main() {
